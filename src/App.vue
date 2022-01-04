@@ -1,32 +1,39 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar
+      app
+      color="primary"
+      dark
+    >
+      <router-link to="/">
+        <div class="text-h4 font-weight-light white--text">
+          Feedback / Bug
+        </div>
+      </router-link>
+
+      <v-spacer></v-spacer>
+
+      <v-btn v-if="!login" to="/login" text small class="pr-0">
+        <span class="mr-2"><v-icon>mdi-login</v-icon></span>
+      </v-btn>
+      <v-btn v-else to="/logout" text small class="pr-0">
+        <span class="mr-2"><v-icon>mdi-logout</v-icon></span>
+      </v-btn>
+    </v-app-bar>
+
+    <v-main>
+      <router-view></router-view>
+    </v-main>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+export default {
+  name: 'App',
+  components: {},
+  data: () => ({
+    login: false,
+  }),
+};
+</script>
